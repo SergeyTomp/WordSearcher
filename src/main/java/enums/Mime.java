@@ -1,3 +1,5 @@
+package enums;
+
 public enum Mime {
 
     TEXT_PLAIN("text/plain"),

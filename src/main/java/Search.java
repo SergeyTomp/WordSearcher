@@ -1,3 +1,4 @@
+import enums.Mime;
 import interfaces.Memoriser;
 import interfaces.Selector;
 
@@ -14,9 +15,9 @@ public class Search {
             System.exit(0);
         }
 
-        Selector selector = new TxtSelector(args, FILE_TYPE);
+        Selector selector = new TxtSelector(args);
         Memoriser memoriser = new SimpleMemoriser();
 
-        new Application(memoriser, selector, LIMIT).start();
+        new Application(memoriser, selector, FILE_TYPE, LIMIT).start();
     }
 }

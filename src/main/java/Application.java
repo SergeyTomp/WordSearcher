@@ -1,3 +1,4 @@
+import enums.Mime;
 import interfaces.Memoriser;
 import interfaces.Ranger;
 import interfaces.Selector;
@@ -14,6 +15,7 @@ public class Application {
     private Memoriser memoriser;
     private Selector selector;
     private long LIMIT;
+    private Mime fileType;
 
     public Application(@NotNull Memoriser memoriser) {
 
@@ -21,7 +23,7 @@ public class Application {
         this.memoriser = memoriser;
     }
 
-    public Application(@NotNull Memoriser memoriser, @NotNull Selector selector, long LIMIT) {
+    public Application(@NotNull Memoriser memoriser, @NotNull Selector selector, @NotNull Mime fileType, long LIMIT) {
 
         if(memoriser == null) throw new IllegalArgumentException("Memoriser instance can't be null!");
         this.memoriser = memoriser;
@@ -29,10 +31,13 @@ public class Application {
         this.selector = selector;
         if (LIMIT < 0) { throw new IllegalArgumentException("LIMIT can't be zero or negative"); }
         this.LIMIT = LIMIT;
+        if (fileType == null) {throw new IllegalArgumentException("FileType can't be null"); }
+        this.fileType = fileType;
     }
 
     public void start() {
 
+        selector.setFileType(fileType);
         List<Path> pathsList = selector.select();
 
         if (pathsList.size() == 0) {
