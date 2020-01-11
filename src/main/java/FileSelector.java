@@ -15,18 +15,18 @@ import java.util.List;
 
 /** Demonstration example of Selector interface instantiation with enums.Mime fileType set via initialisation.
  * For flexibility enums.Mime fileType could be set after Selector instance is created */
-public class TxtSelector implements Selector {
+public class FileSelector implements Selector {
 
     private String[] args;
     @NotNull
     private Mime fileType = Mime.TEXT_PLAIN;
 
-    public TxtSelector(@NotNull String[] args) {
+    public FileSelector(@NotNull String[] args) {
         assert args != null;
         this.args = args;
     }
 
-    public TxtSelector(@NotNull String[] args, @NotNull Mime fileType) {
+    public FileSelector(@NotNull String[] args, @NotNull Mime fileType) {
         this.args = args;
         this.fileType = fileType;
     }

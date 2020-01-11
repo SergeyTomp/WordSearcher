@@ -8,7 +8,7 @@ public class ApplicationTest {
 
         new Application(null);
         new Application(new SimpleMemoriser(), null, Mime.TEXT_PLAIN, 10);
-        new Application(new SimpleMemoriser(), new TxtSelector(new String[10]), Mime.TEXT_PLAIN, 0);
-        new Application(new SimpleMemoriser(), new TxtSelector(new String[10]), null, 10);
+        new Application(new SimpleMemoriser(), new FileSelector(new String[10]), Mime.TEXT_PLAIN, 0);
+        new Application(new SimpleMemoriser(), new FileSelector(new String[10]), null, 10);
     }
 }

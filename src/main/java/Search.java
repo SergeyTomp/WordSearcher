@@ -15,7 +15,7 @@ public class Search {
             System.exit(0);
         }
 
-        Selector selector = new TxtSelector(args);
+        Selector selector = new FileSelector(args);
         Memoriser memoriser = new SimpleMemoriser();
 
         new Application(memoriser, selector, FILE_TYPE, LIMIT).start();

@@ -8,7 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class TxtSelectorTest {
+public class FileSelectorTest {
 
     @Test
     public void testSelector() {
@@ -30,10 +30,10 @@ public class TxtSelectorTest {
             file2 = Files.createFile(path2);
 
             final String[] path = {PATH_TO_DIR};
-            List<Path> select = new TxtSelector(path).select();
+            List<Path> select = new FileSelector(path).select();
             assert select.size() == 2;
 
-            TxtSelector selector = new TxtSelector(path);
+            FileSelector selector = new FileSelector(path);
             selector.setFileType(Mime.TEXT_CSV);
             select = selector.select();
             assert select.size() == 0;
@@ -57,6 +57,6 @@ public class TxtSelectorTest {
     @Test(expected = AssertionError.class)
     public void testSelectorNullArray() {
 
-        new TxtSelector(null);
+        new FileSelector(null);
     }
 }
