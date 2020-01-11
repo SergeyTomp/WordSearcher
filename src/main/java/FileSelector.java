@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/** Demonstration example of Selector interface instantiation with enums.Mime fileType set via initialisation.
+/** Demonstration example of Selector interface instantiation.
  * For flexibility enums.Mime fileType could be set after Selector instance is created */
 public class FileSelector implements Selector {
 

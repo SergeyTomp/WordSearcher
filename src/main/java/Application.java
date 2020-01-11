@@ -8,6 +8,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Application {
@@ -50,7 +51,7 @@ public class Application {
             return;
         }
 
-        System.out.println("Files found for processing:");
+        System.out.println(pathsList.size() + " files found for processing:");
         pathsList.forEach(p -> System.out.println(p.getFileName()));
 
         memoriser.setPathList(pathsList);
@@ -61,10 +62,17 @@ public class Application {
         StringBuilder sb = new StringBuilder();
         System.out.println("Type the sequence and press Enter for searching or Ctrl+C to exit application");
         System.out.print("search > ");
+        Map<String, Integer> rangedMap;
 
         while (sc.hasNext()) {
 
-            ranger.range(sc.nextLine()).forEach((k, v) -> sb.append(k).append(": ").append(v).append("\n"));
+            rangedMap = ranger.range(sc.nextLine());
+            if (rangedMap.values().stream().noneMatch(v -> v != 0)) {
+                System.out.println("No matches found!");
+                System.out.print("search > ");
+                continue;
+            }
+            rangedMap.forEach((k, v) -> sb.append(k).append(": ").append(v).append("\n"));
             System.out.println(sb.toString());
             System.out.print("search > ");
             sb.setLength(0);
